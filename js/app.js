@@ -1,6 +1,6 @@
 // alert('Hey find me to know where to put the javascript');
 MIN = 1;
-MAX = 100;
+MAX = 3;
 
 // Generates a random number between 1 and MAX
 var rand_number = function getRandomInt(MIN, MAX) {
@@ -15,21 +15,18 @@ $(document).ready(function(){
     alert(game_message + MIN + " and " + MAX);
   });
 
-
 // Display message based on whether guess is correct
- function check_guess(correct_number, value) {
-  (correct_number === value) ? alert('You got it!') : alert('Try Again...');
-}
+ var check_guess= function(correct_number, value) {
+   (correct_number === value) ? alert('You got it!') : alert('Try Again...');
+};
 
 // store guess and run check
-var store_and_check = function() {
+var format_guess = function() {
     // issue using global variable?
-    value = parseInt($("input").val(), 10);
-    check_guess(correct_number, value);
+    return parseInt($("input").val(), 10);
   };
 
 // On button click
-$("a").on( "click", store_and_check );
-
-
-
+$("a").on( "click", function(e) {
+  check_guess(correct_number, format_guess());
+});
